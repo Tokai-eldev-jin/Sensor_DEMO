@@ -225,8 +225,8 @@ for(let i=0;i<100;i++){
 function Create_grapf(getdata,getdata1) {
 	let screen_w = 900;
 	let screen_h = 450;
-	let Max_val = 5000;
-	let Min_val = 0;
+	let Max_val = 3000;
+	let Min_val = 1000;
 	let i=0;
 	let ii=0;
 	var plot_color = new Array('red', 'blue', 'yellow' ,'green');
@@ -258,7 +258,7 @@ function Create_grapf(getdata,getdata1) {
 	}
 
 	for(i=0;i<=5;i++){
-        display_text = display_text + "<text x='-5' y='"+ (screen_h/5*i+10) +"' font-size='20' stroke='black' text-anchor='end' stroke-width='1'>"+(Max_val-Max_val/5*i)+"</text>"
+        display_text = display_text + "<text x='-5' y='"+ (screen_h/5*i+10) +"' font-size='20' stroke='black' text-anchor='end' stroke-width='1'>"+(Max_val-(Max_val-Min_val)/5*i)+"</text>"
     }
     
 	
@@ -273,12 +273,21 @@ function Create_grapf(getdata,getdata1) {
 	        y1 -= Min_val;
 	        y1 *= screen_h;
 	        y1 /= (Max_val - Min_val);
+	        
+	        if(y1>=screen_h) y1 = screen_h;
+	        if(y1<=0) y1 = 0;
+	        
 	        y1 = screen_h - y1;
+	        
 	        
 	        y2 =  array1[(i+1)][ii];
 	        y2 -= Min_val;
 	        y2 *= screen_h;
 	        y2 /= (Max_val - Min_val);
+	        
+	        if(y2>=screen_h) y1 = screen_h;
+	        if(y2<=0) y2 = 0;
+	        
 	        y2 = screen_h - y2;
 	        display_text = display_text + "<line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' style='stroke:"+ plot_color[ii] +";stroke-width:2' />";
 	        
