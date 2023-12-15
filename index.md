@@ -11,6 +11,8 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<title>分光センサ DEMO</title>
 		<!--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="style.css">-->
+
+
 		<script type="text/javascript" src="bluejelly.js"></script>
 		<script type="text/javascript" src="./smoothie.js"></script>
 	</head>
@@ -18,7 +20,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 <body>
 <div class="container">
 	<div class="title margin">
-		<font color="orange"> <h4><p id="title">分光Sensor DEMO</p></h4></font>
+		<font color="orange"> <h2><p id="title">分光Sensor DEMO</p></h2></font>
 	</div>
 
 	<div class="contents margin">
@@ -348,7 +350,7 @@ function Create_grapf() {
 	}
 
 	//横目盛り
-	for(i=1;i<=8;i++){	
+	for(i=1;i<=7;i++){	
 		display_text = display_text + "<text x='" + screen_w/8*i + "' y='"+(screen_h+30)+"' font-size='20' stroke='black' text-anchor='middle' stroke-width='1'>"+Hachou[i-1]+"</text>"
 	}
 	
