@@ -9,8 +9,8 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<meta name="description" content="BlueJelly">
 		<meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
 		<title>分光センサ DEMO</title>
-		<!--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="style.css">-->
+		<!--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">-->
+		<link rel="stylesheet" href="style.css">
 
 
 		<script type="text/javascript" src="bluejelly.js"></script>
@@ -20,7 +20,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 <body>
 <div class="container">
 	<div class="title margin">
-		<font color="orange"> <h2><p id="title">分光Sensor DEMO</p></h2></font>
+		<font color="blue"> <h1><p id="title" style="color:blue;">分光Sensor DEMO</p></h1></font>
 	</div>
 
 	<div class="contents margin">
@@ -39,19 +39,19 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<div id="svg">GRAPH AREA</div>
 		<hr>
 
-		<span id="data_text0"> </span>
-		<span>　　</span>
-		<span id="data_text1"> </span>
-		<span>　　</span>
-		<span id="data_text2"> </span>
-		<span>　　</span>
-		<span id="data_text3"> </span>
-		<span>　　</span>
-		<span id="data_text4"> </span>
-		<span>　　</span>
-		<span id="data_text5"> </span>
-		<span>　　</span>
-		<span id="data_text6"> </span>
+		<span id="data_box0"> </span>
+		<span>　</span>
+		<span id="data_box1"> </span>
+		<span>　</span>
+		<span id="data_box2"> </span>
+		<span>　</span>
+		<span id="data_box3"> </span>
+		<span>　</span>
+		<span id="data_box4"> </span>
+		<span>　</span>
+		<span id="data_box5"> </span>
+		<span>　</span>
+		<span id="data_box6"> </span>
 		
 		<!--<div id="device_name"> </div>
 		<div id="uuid_name"> </div>
@@ -142,7 +142,7 @@ ble.onRead = function (data, uuid){
 	let Toukaritu3;
 	let i;
 	
-	var data_display = new Array('data_text0','data_text1','data_text2','data_text3','data_text4','data_text5','data_text6');
+	var data_display = new Array('data_box0','data_box1','data_box2','data_box3','data_box4','data_box5','data_box6');
 
 	//フォーマットに従って値を取得
 	let value = "";
@@ -312,10 +312,10 @@ let button=0;
 let zairyou="";
 let Pre_zairyou="";
 let Siki1 = 90;
-let Siki2 = 75;
+let Siki2 = 78;
 let Siki3 = 65;
-let screen_w = 800;
-let screen_h = 480;
+let screen_w = 600;
+let screen_h = 400;
 let Max_val = 120;
 let Min_val = 0;
 
@@ -331,7 +331,7 @@ function Create_grapf() {
 	var Hachou = new Array('1400','1500','1600','1700','1800','1900','2000','2100');
 	
 
-	let display_text="<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='" + screen_h + "' width='" + screen_w + "' viewBox='-80 -80 1000 700' class='SvgFrame'>";
+	let display_text="<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='" + screen_h + "' width='" + screen_w + "' viewBox='-50 -60 700 540' class='SvgFrame'>";
 	
 	//外枠
 	display_text = display_text + "<line x1='0' y1='0' x2='" + screen_w + "' y2='0' style='stroke:black;stroke-width:1' />";
@@ -351,27 +351,27 @@ function Create_grapf() {
 
 	//横目盛り
 	for(i=1;i<=7;i++){	
-		display_text = display_text + "<text x='" + screen_w/8*i + "' y='"+(screen_h+30)+"' font-size='20' stroke='black' text-anchor='middle' stroke-width='1'>"+Hachou[i-1]+"</text>"
+		display_text = display_text + "<text x='" + screen_w/8*i + "' y='"+(screen_h+30)+"' font-size='20' text-anchor='middle' stroke-width='1'>"+Hachou[i-1]+"</text>"
 	}
 	
 	//縦目盛り
 	for(i=0;i<=10;i++){
-        display_text = display_text + "<text x='-5' y='"+ (screen_h/10*i+10) +"' font-size='20' stroke='black' text-anchor='end' stroke-width='1'>"+(Max_val-(Max_val-Min_val)/10*i)+"</text>"
+        display_text = display_text + "<text x='-5' y='"+ (screen_h/10*i+10) +"' font-size='20' text-anchor='end' stroke-width='1'>"+(Max_val-(Max_val-Min_val)/10*i)+"</text>"
     }
     
 	
 	//##########　材料の表示　##########
 	if(Pre_zairyou==zairyou){
-		display_text = display_text + "<text x='50' y='-50' font-size='40' fill='red' stroke='red' text-anchor='start' stroke-width='1'>"+ zairyou +"</text>"
+		display_text = display_text + "<text x='50' y='-30' font-size='30' fill='red' text-anchor='start' stroke-width='1'>"+ zairyou +"</text>"
 	}
 
 
 	//##########　X軸のタイトル表示　##########
-	display_text = display_text + "<text x='"+screen_w/10*5+"' y='"+(screen_h+80)+"' font-size='30' text-anchor='middle' stroke-width='1'>波長（nm）</text>"
+	display_text = display_text + "<text x='"+screen_w/10*5+"' y='"+(screen_h+70)+"' font-size='25' text-anchor='middle' stroke-width='1'>波長（nm）</text>"
 	
 
 	//##########　Y軸のタイトル表示　##########
-	display_text = display_text + "<text x='"+(-1*screen_h/2)+"' y='-60' font-size='30' text-anchor='middle' stroke-width='1' transform='rotate(-90,0,0)'>透過率 (%) </text>"
+	display_text = display_text + "<text x='"+(-1*screen_h/2)+"' y='-60' font-size='25' text-anchor='middle' stroke-width='1' transform='rotate(-90,0,0)'>透過率 (%) </text>"
  	
 
 
