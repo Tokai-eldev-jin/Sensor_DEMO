@@ -39,7 +39,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<div id="svg">GRAPH AREA</div>
 		<hr>
 
-		<span id="data_box0"> </span>
+		<font face="Comic Sans MS" color="#448aff"><span id="data_box0"> </span>
 		<span>　</span>
 		<span id="data_box1"> </span>
 		<span>　</span>
@@ -51,7 +51,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<span>　</span>
 		<span id="data_box5"> </span>
 		<span>　</span>
-		<span id="data_box6"> </span>
+		<span id="data_box6"> </span></font>
 		
 		<!--<div id="device_name"> </div>
 		<div id="uuid_name"> </div>
@@ -316,8 +316,8 @@ let Siki2 = 80;
 let Siki3 = 65;
 let screen_w = 600;
 let screen_h = 400;
-let Max_val = 120;
-let Min_val = 0;
+let Max_val = 105;
+let Min_val = 55;
 
 
 
@@ -329,7 +329,7 @@ function Create_grapf() {
 	let ii=0;
 	var plot_color = new Array('red', 'blue', 'yellow' ,'green','purple','pink','navy','teal','lime','aqua','fuchsia','maroon','gray','silver','skyblue');
 	var Hachou = new Array('1400','1500','1600','1700','1800','1900','2000','2100');
-	
+	let color_num = 1;
 
 	let display_text="<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='" + screen_h + "' width='" + screen_w + "' viewBox='-50 -60 700 540' class='SvgFrame'>";
 	
@@ -354,12 +354,12 @@ function Create_grapf() {
 
 	//横目盛り
 	for(i=1;i<=7;i++){	
-		display_text = display_text + "<text x='" + screen_w/8*i + "' y='"+(screen_h+30)+"' font-size='20' text-anchor='middle' stroke-width='1'>"+Hachou[i-1]+"</text>"
+		display_text = display_text + "<text fill='#448aff' font-family='Script' font-weight='bold'  x='" + screen_w/8*i + "' y='"+(screen_h+30)+"' font-size='20' text-anchor='middle' stroke-width='1'>"+Hachou[i-1]+"</text>"
 	}
 	
 	//縦目盛り
 	for(i=0;i<=10;i++){
-        display_text = display_text + "<text x='-5' y='"+ (screen_h/10*i+10) +"' font-size='20' text-anchor='end' stroke-width='1'>"+(Max_val-(Max_val-Min_val)/10*i)+"</text>"
+        display_text = display_text + "<text  fill='#448aff' font-family='Script' font-weight='bold'  x='-5' y='"+ (screen_h/10*i+10) +"' font-size='20' text-anchor='end' stroke-width='1'>"+(Max_val-(Max_val-Min_val)/10*i)+"</text>"
     }
     
 	
@@ -370,11 +370,11 @@ function Create_grapf() {
 
 
 	//##########　X軸のタイトル表示　##########
-	display_text = display_text + "<text x='"+screen_w/10*5+"' y='"+(screen_h+70)+"' font-size='25' text-anchor='middle' stroke-width='1'>波長（nm）</text>"
+	display_text = display_text + "<text  fill='#448aff' fill='#448aff' font-family='Comic Sans MS' font-weight='bold'  x='"+screen_w/10*5+"' y='"+(screen_h+70)+"' font-size='25' text-anchor='middle' stroke-width='1'>波長（nm）</text>"
 	
 
 	//##########　Y軸のタイトル表示　##########
-	display_text = display_text + "<text x='"+(-1*screen_h/2)+"' y='-60' font-size='25' text-anchor='middle' stroke-width='1' transform='rotate(-90,0,0)'>透過率 (%) </text>"
+	display_text = display_text + "<text  fill='#448aff' font-family='Script' font-weight='bold'  x='"+(-1*screen_h/2)+"' y='-60' font-size='25' text-anchor='middle' stroke-width='1' transform='rotate(-90,0,0)'>透過率 (%) </text>"
  	
 
 
@@ -407,15 +407,15 @@ function Create_grapf() {
       if(y2>(screen_h)) y2= screen_h;
       if(y2<0) y2=0;
       
-      display_text = display_text + "<line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' style='stroke:"+ plot_color[ii] +";stroke-width:2' />";
+      display_text = display_text + "<line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' style='stroke:"+ plot_color[color_num] +";stroke-width:2' />";
       
-	  display_text = display_text + "<circle cx='" + x1 + "' cy='" + y1 + "' r='10' fill='"+plot_color[ii]+"' />";
+	  display_text = display_text + "<circle cx='" + x1 + "' cy='" + y1 + "' r='10' fill='"+plot_color[color_num]+"' />";
 
 
       x1 = x1 + screen_w / 8;
     }
     
-    display_text = display_text + "<circle cx='" + x2 + "' cy='" + y2 + "' r='10' fill='"+plot_color[ii]+"' />";
+    display_text = display_text + "<circle cx='" + x2 + "' cy='" + y2 + "' r='10' fill='"+plot_color[color_num]+"' />";
     
     display_text += "</svg>"
     document.getElementById("svg").innerHTML =  display_text;
