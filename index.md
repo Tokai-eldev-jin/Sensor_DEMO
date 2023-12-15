@@ -9,7 +9,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 		<meta name="description" content="BlueJelly">
 		<meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
 		<title>分光センサ DEMO</title>
-		<!--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">-->
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="style.css">
 
 
@@ -334,10 +334,13 @@ function Create_grapf() {
 	let display_text="<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='" + screen_h + "' width='" + screen_w + "' viewBox='-50 -60 700 540' class='SvgFrame'>";
 	
 	//外枠
-	display_text = display_text + "<line x1='0' y1='0' x2='" + screen_w + "' y2='0' style='stroke:black;stroke-width:1' />";
+	
+	/*display_text = display_text + "<line x1='0' y1='0' x2='" + screen_w + "' y2='0' style='stroke:black;stroke-width:1' />";
 	display_text = display_text + "<line x1='0' y1='" + screen_h + "' x2='" + screen_w + "' y2='" + screen_h + "' style='stroke:black;stroke-width:1' />";
 	display_text = display_text + "<line x1='0' y1='0' x2='0' y2='" + screen_h + "' style='stroke:black;stroke-width:1' />";
 	display_text = display_text + "<line x1='" + screen_w + "' y1='0' x2='" + screen_w + "' y2='" + screen_h + "' style='stroke:black;stroke-width:1' />";
+	*/
+	display_text = display_text + "<rect x='0' y1='0' width='"+screen_w+"' height='"+screen_h+"' fill='white'  style='stroke:gray;stroke-width:1' />"
 	
 	//横目盛り線
 	for(i=1;i<=9;i++){
